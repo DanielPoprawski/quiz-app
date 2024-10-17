@@ -1,0 +1,24 @@
+[
+  {
+    "type": "mcq",
+    "title": "What is the max range of a M777 howitzter?",
+    "answer": 1,
+    "choices": ["37km", "24km", "30km", "19.5km"]
+  },
+  {
+    "type": "tf",
+    "title": "Crafts has a 4 inch wiener",
+    "answer": "true"
+  },
+  {
+    "type": "fitb",
+    "title": "How do you spell BMW?",
+    "answer": "BMW"
+  },
+  {
+    "type": "mcq",
+    "title": "Who's the biggest rat in 6-8?",
+    "answer": 0,
+    "choices": ["Alcivar", "Blackburn", "Smith", "Crafts", "Lt Briggs"]
+  }
+]
