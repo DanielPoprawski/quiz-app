@@ -5,10 +5,6 @@ function FillInTheBlank(props: any) {
 
   function handleChange(event: any) {
     update(event.target.value);
-    props.questionHandler.questionMatrix.set(
-      "question" + props.questionHandler.index,
-      state
-    );
   }
 
   return (
