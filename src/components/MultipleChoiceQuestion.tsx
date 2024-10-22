@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { UserCount } from "./QuizContext.jsx";
 
-function MultipleChoiceQuestion(props: any) {
-  const [value, setValue] = useState("blank");
+export default function MultipleChoiceQuestion(props: any) {
+  const [map, updateMap] = UserCount;
+  const [value, setValue] = useState(0);
 
   function handleChange(event: any) {
     setValue(event.target.value);
@@ -13,13 +15,7 @@ function MultipleChoiceQuestion(props: any) {
       <p>
         {props.choices.map((choice: any, i: number) => (
           <label>
-            <input
-              type="radio"
-              name={"question_" + props.index}
-              key={i}
-              value={i}
-              onChange={handleChange}
-            />
+            <input type="radio" name={"question_" + props.index} key={i} value={i} onChange={handleChange} />
             {choice}
             <br />
           </label>
@@ -28,5 +24,3 @@ function MultipleChoiceQuestion(props: any) {
     </>
   );
 }
-
-export default MultipleChoiceQuestion;

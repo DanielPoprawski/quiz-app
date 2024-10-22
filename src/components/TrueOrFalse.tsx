@@ -1,25 +1,15 @@
-function FillInTheBlank(props: any) {
+export default function FillInTheBlank(props: any) {
   return (
     <>
       <h2> {props.title} </h2>
       <p>
         <label>
-          <input
-            type="radio"
-            required
-            name={"question_" + props.index}
-            value="true"
-          />
+          <input type="radio" required name={"question_" + props.index} value="true" />
           True
           <br />
         </label>
         <label>
-          <input
-            type="radio"
-            required
-            name={"question_" + props.index}
-            value="false"
-          />
+          <input type="radio" required name={"question_" + props.index} value="false" />
           False
           <br />
         </label>
@@ -27,5 +17,3 @@ function FillInTheBlank(props: any) {
     </>
   );
 }
-
-export default FillInTheBlank;

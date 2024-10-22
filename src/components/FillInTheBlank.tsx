@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function FillInTheBlank(props: any) {
+export default function FillInTheBlank(props: any) {
   const [state, update] = useState();
 
   function handleChange(event: any) {
@@ -12,17 +12,10 @@ function FillInTheBlank(props: any) {
       <h2> {props.title} </h2>
       <p>
         <label>
-          <input
-            type="text"
-            name={"question_" + props.index}
-            onChange={handleChange}
-            required
-          />
+          <input type="text" name={"question_" + props.index} onChange={handleChange} required />
           <br />
         </label>
       </p>
     </>
   );
 }
-
-export default FillInTheBlank;
