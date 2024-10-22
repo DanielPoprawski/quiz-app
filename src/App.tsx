@@ -28,6 +28,8 @@ function QuestionFormatter(question: any, index: any) {
   );
 }
 
+//TODO: Fix this button, it needs to work
+
 function App() {
   return (
     <QuizContextProvider>

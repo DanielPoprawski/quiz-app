@@ -5,6 +5,8 @@ export default function MultipleChoiceQuestion(props: any) {
   const [map, updateMap] = UserCount;
   const [value, setValue] = useState(0);
 
+  //TODO: Update MCQ, FTB and TOF to use the global context hashmap to store its data
+
   function handleChange(event: any) {
     setValue(event.target.value);
   }
