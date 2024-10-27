@@ -7,18 +7,18 @@
   },
   {
     "type": "tf",
-    "title": "Crafts has a 4 inch wiener",
-    "answer": true
+    "title": "The minimum deviation correction is 35m",
+    "answer": false
   },
   {
     "type": "fitb",
-    "title": "How do you spell BMW?",
-    "answer": "BMW"
+    "title": "What is the acronym for the 14 Methods of Control?",
+    "answer": "FACTTCCCCCRRDD"
   },
   {
     "type": "mcq",
-    "title": "Who's the biggest rat in 6-8?",
+    "title": "What is the minimal vertical shift, and how many meters is it expressed to?",
     "answer": 0,
-    "choices": ["Alcivar", "Blackburn", "Smith", "Crafts", "Lt Briggs"]
+    "choices": ["35m / 5m", "30m / 10m", "35m / 10m", "30m / 5m"]
   }
 ]

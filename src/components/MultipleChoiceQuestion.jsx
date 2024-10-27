@@ -10,8 +10,8 @@ export default function MultipleChoiceQuestion(props) {
       <h2> {props.title} </h2>
       <p>
         {props.choices.map((choice, i) => (
-          <label>
-            <input type="radio" name={"question_" + props.index} key={i} value={i} onChange={handleChange} />
+          <label key={i}>
+            <input type="radio" name={"question_" + props.index}  value={i} onChange={handleChange} />
             {choice}
             <br />
           </label>

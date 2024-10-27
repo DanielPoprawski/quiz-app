@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { QuizContext } from "../App";
 
 export default function Err(props){
 
@@ -6,10 +7,12 @@ export default function Err(props){
     // Add some sort of index
     // Make small list of basic error messages
 
-    const [message, setMessage] = useState("");
+    const {error, changeError} = useContext(QuizContext);
+    const index = props.index;
+
 
     return (
-    <h6 style={{color: "red"}} key={props.index}>
-        {message}
+    <h6 style={{color: "red"}} index={index} >
+        {error[index]}
     </h6>)
 }
