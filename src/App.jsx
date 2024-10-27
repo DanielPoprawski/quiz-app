@@ -39,7 +39,7 @@ export default function App() {
 
 
 
-//TODO: Clean up this question formatter, and also integrate the .map() function directly into it, or move it to a new page all together
+//TODO: Integrate the .map() function directly into it, or move it to a new page all together
 function QuestionFormatter(question, index) {
   return (
     <>

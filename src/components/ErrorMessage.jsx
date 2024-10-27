@@ -1,9 +1,10 @@
 import { useState } from "react";
 
 export default function Err(props){
-    
 
-    //Make function to accept error messages from App
+    // TODO: Make function to accept error messages from App
+    // Add some sort of index
+    // Make small list of basic error messages
 
     const [message, setMessage] = useState("");
 
