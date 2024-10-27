@@ -4,7 +4,7 @@ import { QuizContext } from "../App";
 export default function MultipleChoiceQuestion(props) {
   const {map, setMap} = useContext(QuizContext);
   const [value, setValue] = useState();
-  
+
   return (
     <>
       <h2> {props.title} </h2>

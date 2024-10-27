@@ -3,6 +3,7 @@ import "./index.css";
 import MCQ from "./components/MultipleChoiceQuestion.jsx";
 import FITB from "./components/FillInTheBlank.jsx";
 import TF from "./components/TrueOrFalse.jsx";
+import Err from "./components/ErrorMessage.jsx";
 import data from "./assets/questions.json";
 import { createContext, useState, StrictMode } from "react";
 import { createRoot } from 'react-dom/client';
@@ -16,6 +17,7 @@ data.map((question, i) => {
 
 export default function App() {
   const [map, setMap] = useState(new Map());
+  const [error, changeError] = useState(new Map());
 
 
   //TODO: Fix this submit quiz function
@@ -28,7 +30,7 @@ export default function App() {
   }
 
   return (
-      <QuizContext.Provider value={{map, setMap}}>
+      <QuizContext.Provider value={{map, setMap, error, changeError}}>
         {data.map((question, index) => QuestionFormatter(question, index))}
         <button onClick={submitQuiz}> Submit Quiz</button>
       </QuizContext.Provider>
@@ -46,6 +48,7 @@ function QuestionFormatter(question, index) {
       )}
       {question.type === 'fitb' && <FITB title={question.title} index={index} />}
       {question.type === 'tf' && <TF title={question.title} index={index} />}
+      <Err index={index}/>
       <br />
     </>
   );
