@@ -8,6 +8,10 @@ import { createContext, useState, StrictMode } from "react";
 import { createRoot } from 'react-dom/client';
 
 export const QuizContext = createContext(null);
+const Answerkey = new Map();
+data.map((question, i) => {
+  Answerkey.set(i, question.answer);
+})
 
 
 export default function App() {
@@ -16,8 +20,11 @@ export default function App() {
 
   //TODO: Fix this submit quiz function
   function submitQuiz() {
-    console.log("Submitted Answers", map);
-    console.log("Correct Answers: ", QuestionMapper());
+    console.log("Submitted Answers", map.size);
+    console.log("Correct Answers: ", Answerkey.size);
+    if (map.size < Answerkey.size) {
+      console.log("All questions must be answered before continuing");
+    }
   }
 
   return (
@@ -44,13 +51,6 @@ function QuestionFormatter(question, index) {
   );
 }
 
-function QuestionMapper() {
-  let correctAnswers = new Map();
-  data.map((question, i) => {
-    correctAnswers.set(i, question.answer);
-  })
-  return correctAnswers;
-}
 
 createRoot(document.getElementById('root')).render(<StrictMode>
   <App />
