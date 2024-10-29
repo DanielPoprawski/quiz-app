@@ -109,7 +109,7 @@ button:focus-visible {
 
 div.content {
         margin-left: 6rem;
-        padding: 1rem;
+        padding: 1rem 1rem 1rem 3rem;
 }
 
 .sidebar {
@@ -118,6 +118,12 @@ div.content {
         margin: 0px;
         padding: 1rem;
         height: 100%;
+        background-color: #f0f0f0;
+}
+
+.sidebar :hover {
+        background-color: #d8d8d8;
+        transition: background-color 1s;
 }
 
 .sidebar a {
@@ -126,6 +132,7 @@ div.content {
         display: block;
         border-style: solid;
         border-width: 0.15rem;
-        border-color: #111111;
+        border-color: #b2b2b2;
         border-radius: 20px;
+        line-height: 0rem;
 }
