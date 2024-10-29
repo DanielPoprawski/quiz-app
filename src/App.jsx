@@ -1,12 +1,10 @@
-import "./App.css";
 import "./index.css";
 import MCQ from "./components/MultipleChoiceQuestion.jsx";
 import FITB from "./components/FillInTheBlank.jsx";
 import TF from "./components/TrueOrFalse.jsx";
 import Err from "./components/ErrorMessage.jsx";
 import data from "./assets/questions.json";
-import { createContext, useState, StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import { createContext, useState } from "react";
 
 export const QuizContext = createContext(null);
 const AnswerKey = new Map();
@@ -27,6 +25,7 @@ export default function App() {
                 const errorMessage = {};
                 auxSet.forEach((value) => (errorMessage[value] = "Please answer all questions before submitting"));
                 changeError(errorMessage);
+                //TODO: Add an alert that allows the user to manually submit even if not all questions have been answered
 
                 if (auxSet.size < 1) {
                         calculateScore();
@@ -59,11 +58,13 @@ export default function App() {
         }
 
         return (
-                <QuizContext.Provider value={{ map, setMap, error, changeError }}>
-                        {data.map((question, index) => QuestionFormatter(question, index))}
-                        <button onClick={submitQuiz}> Submit Quiz</button>
-                        <h4 style={{ color: scoreColor }}>{score}</h4>
-                </QuizContext.Provider>
+                <div className="content">
+                        <QuizContext.Provider value={{ map, setMap, error, changeError }}>
+                                {data.map((question, index) => QuestionFormatter(question, index))}
+                                <button onClick={submitQuiz}> Submit Quiz</button>
+                                <h4 style={{ color: scoreColor }}>{score}</h4>
+                        </QuizContext.Provider>
+                </div>
         );
 }
 
@@ -81,9 +82,3 @@ function QuestionFormatter(question, index) {
                 </>
         );
 }
-
-createRoot(document.getElementById("root")).render(
-        <StrictMode>
-                <App />
-        </StrictMode>
-);

@@ -68,7 +68,7 @@ button:focus-visible {
 
 #root {
         max-width: 1280px;
-        padding: 2rem;
+        padding: 0rem;
 }
 
 .logo {
@@ -105,4 +105,27 @@ button:focus-visible {
 
 .read-the-docs {
         color: #888;
+}
+
+div.content {
+        margin-left: 6rem;
+        padding: 1rem;
+}
+
+.sidebar {
+        width: fit-content;
+        position: fixed;
+        margin: 0px;
+        padding: 1rem;
+        height: 100%;
+}
+
+.sidebar a {
+        padding: 1rem 1rem 1rem 1rem;
+        margin: 0rem 0rem 1rem 0rem;
+        display: block;
+        border-style: solid;
+        border-width: 0.15rem;
+        border-color: #111111;
+        border-radius: 20px;
 }
