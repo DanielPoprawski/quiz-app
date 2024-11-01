@@ -3,7 +3,7 @@ import MCQ from "./components/MultipleChoiceQuestion.jsx";
 import FITB from "./components/FillInTheBlank.jsx";
 import TF from "./components/TrueOrFalse.jsx";
 import Err from "./components/ErrorMessage.jsx";
-import data from "./assets/questions.json";
+import data from "./assets/directory/questions.json";
 import { createContext, useState } from "react";
 
 export const QuizContext = createContext(null);

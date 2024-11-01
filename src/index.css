@@ -110,6 +110,7 @@ button:focus-visible {
 div.content {
         margin-left: 6rem;
         padding: 1rem 1rem 1rem 3rem;
+        width: 100%;
 }
 
 .sidebar {
@@ -135,4 +136,20 @@ div.content {
         border-color: #b2b2b2;
         border-radius: 20px;
         line-height: 0rem;
+}
+
+table {
+        width: 100%;
+        border: #969696 solid 1px;
+        border-collapse: collapse;
+}
+
+th,
+td {
+        padding: 0rem 1rem 0rem 1rem;
+}
+
+th {
+        background-color: #e6e6e6;
+        width: 100px;
 }
