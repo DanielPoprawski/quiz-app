@@ -5,6 +5,7 @@ import TF from "./components/TrueOrFalse.jsx";
 import Err from "./components/ErrorMessage.jsx";
 import MQF from "./assets/directory/MQF.json";
 import SkillLevel1 from "./assets/directory/SkillLevel1.json";
+import { useParams } from "react-router-dom";
 import { createContext, useState } from "react";
 
 export const QuizContext = createContext(null);
@@ -15,7 +16,7 @@ export default function Learn() {
         const [error, changeError] = useState({});
         const [score, setScore] = useState();
         const [scoreColor, setColor] = useState("green");
-        const [currentIndex, changeIndex] = useState(0);
+        const [currentIndex, changeIndex] = useState(useParams().questionSet);
         const questionSets = [MQF, SkillLevel1];
 
         questionSets[currentIndex].map((question, i) => {

@@ -19,6 +19,7 @@ export default function Sidebar() {
                         <a href="#menu" onClick={toggleHidden}>
                                 <img src="../src/assets/icons/menu-svgrepo-com.svg" width={size} height={size} />
                         </a>
+
                         <a href="/" style={style}>
                                 <img src="../src/assets/icons/home-svgrepo-com.svg" width={size} height={size} />
                         </a>

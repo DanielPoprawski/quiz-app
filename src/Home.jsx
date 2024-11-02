@@ -17,13 +17,13 @@ export default function Home() {
                                 </tr>
                                 <tr>
                                         <td>
-                                                <a href="/learn">MQF 2024 Fort Sill</a>
+                                                <a href="/learn/0">MQF 2024 Fort Sill</a>
                                         </td>
                                         <td>4</td>
                                 </tr>
                                 <tr>
                                         <td>
-                                                <a href="/learn">Skill Level 1 MQF</a>
+                                                <a href="/learn/1">Skill Level 1 MQF</a>
                                         </td>
                                         <td>4</td>
                                 </tr>
