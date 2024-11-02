@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { QuizContext } from "../App";
+import { QuizContext } from "../Learn";
 
 export default function Err(props) {
         /* TODO: Make function to accept error messages from App

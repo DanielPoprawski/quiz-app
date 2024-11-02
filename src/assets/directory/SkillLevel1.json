@@ -1,0 +1,29 @@
+[
+        {
+                "type": "mcq",
+                "title": "As an observer, which of the five requirements for achieving accurate first-round fire for effect are you solely responsible for?",
+                "answer": 1,
+                "choices": [
+                        "Accurate Firing Unit Location",
+                        "Accurate Target Location and Size",
+                        "Accurate Computational Procedures",
+                        "Accurate Meteorological Information"
+                ]
+        },
+        {
+                "type": "mcq",
+                "title": "Which  asset provides the commander flexibility, range, speed, lethality, precision and the ability to mass fires at a desired time and place?",
+                "answer": 2,
+                "choices": ["Unmanned Aircraft", "Mortars", "Fixed Wing Aircraft", "Army Attack Aviation"]
+        },
+        {
+                "type": "fitb",
+                "title": "Observers equipped with nothing more than a map, binoculars, and compass typically have a mean target location error of about how many meters?",
+                "answer": "250"
+        },
+        {
+                "type": "tf",
+                "title": "True/ False: The AH-64 is equipped with 30mm, 2.75-inch rockets, and Hellfires",
+                "answer": true
+        }
+]

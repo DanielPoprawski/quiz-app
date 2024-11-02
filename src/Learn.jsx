@@ -3,20 +3,24 @@ import MCQ from "./components/MultipleChoiceQuestion.jsx";
 import FITB from "./components/FillInTheBlank.jsx";
 import TF from "./components/TrueOrFalse.jsx";
 import Err from "./components/ErrorMessage.jsx";
-import data from "./assets/directory/questions.json";
+import MQF from "./assets/directory/MQF.json";
+import SkillLevel1 from "./assets/directory/SkillLevel1.json";
 import { createContext, useState } from "react";
 
 export const QuizContext = createContext(null);
 const AnswerKey = new Map();
-data.map((question, i) => {
-        AnswerKey.set(i, question.answer);
-});
 
-export default function App() {
+export default function Learn() {
         const [map, setMap] = useState(new Map());
         const [error, changeError] = useState({});
         const [score, setScore] = useState();
         const [scoreColor, setColor] = useState("green");
+        const [currentIndex, changeIndex] = useState(0);
+        const questionSets = [MQF, SkillLevel1];
+
+        questionSets[currentIndex].map((question, i) => {
+                AnswerKey.set(i, question.answer);
+        });
 
         function submitQuiz() {
                 const auxSet = new Set(AnswerKey.keys());
@@ -60,7 +64,7 @@ export default function App() {
         return (
                 <div className="content">
                         <QuizContext.Provider value={{ map, setMap, error, changeError }}>
-                                {data.map((question, index) => QuestionFormatter(question, index))}
+                                <QuizBody fileData={questionSets[currentIndex]} />
                                 <button onClick={submitQuiz}> Submit Quiz</button>
                                 <h4 style={{ color: scoreColor }}>{score}</h4>
                         </QuizContext.Provider>
@@ -68,17 +72,20 @@ export default function App() {
         );
 }
 
-//TODO: Integrate the .map() function directly into it, or move it to a new page all together
-function QuestionFormatter(question, index) {
+function QuizBody({ fileData }) {
         return (
                 <>
-                        {question.type === "mcq" && (
-                                <MCQ title={question.title} choices={question.choices} index={index} />
-                        )}
-                        {question.type === "fitb" && <FITB title={question.title} index={index} />}
-                        {question.type === "tf" && <TF title={question.title} index={index} />}
-                        <Err index={index} />
-                        <br />
+                        {fileData.map((question, index) => (
+                                <>
+                                        {question.type === "mcq" && (
+                                                <MCQ title={question.title} choices={question.choices} index={index} />
+                                        )}
+                                        {question.type === "fitb" && <FITB title={question.title} index={index} />}
+                                        {question.type === "tf" && <TF title={question.title} index={index} />}
+                                        <Err index={index} />
+                                        <br />
+                                </>
+                        ))}
                 </>
         );
 }

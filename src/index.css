@@ -139,7 +139,7 @@ div.content {
 }
 
 table {
-        width: 100%;
+        width: 80%;
         border: #969696 solid 1px;
         border-collapse: collapse;
 }
@@ -151,5 +151,4 @@ td {
 
 th {
         background-color: #e6e6e6;
-        width: 100px;
 }
