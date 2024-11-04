@@ -32,6 +32,10 @@ export default function Sidebar() {
                                 />
                         </a>
 
+                        <a href="/memorize" style={style}>
+                                <img src="../src/assets/icons/brain-svgrepo-com.svg" width={size} height={size} />
+                        </a>
+
                         <a href="/settings" style={style}>
                                 <img src="../src/assets/icons/gear-svgrepo-com.svg" width={size} height={size} />
                         </a>

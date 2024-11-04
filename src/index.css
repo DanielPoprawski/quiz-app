@@ -67,7 +67,6 @@ button:focus-visible {
 }
 
 #root {
-        max-width: 1280px;
         padding: 0rem;
 }
 
@@ -151,4 +150,15 @@ td {
 
 th {
         background-color: #e6e6e6;
+}
+
+.typing {
+        font-family: monospace;
+        color: grey;
+        width: 80%;
+        text-align: center;
+        position: absolute;
+        top: 30%;
+        left: 10%;
+        font-size: 2rem;
 }

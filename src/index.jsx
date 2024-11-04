@@ -1,10 +1,11 @@
 import { createRoot } from "react-dom/client";
 import { StrictMode } from "react";
 import { BrowserRouter as Router, Routes, Route, createBrowserRouter, RouterProvider } from "react-router-dom";
-import Learn from "./Learn.jsx";
-import Home from "./Home.jsx";
-import Sidebar from "./Sidebar.jsx";
-import NotFound from "./components/404.jsx";
+import Learn from "./pages/Learn.jsx";
+import Home from "./pages/Home.jsx";
+import Sidebar from "./pages/Sidebar.jsx";
+import NotFound from "./pages/404.jsx";
+import Memorize from "./pages/Memorize.jsx";
 
 const router = createBrowserRouter([
         {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
         {
                 path: "/learn/:questionSet",
                 element: <Learn />,
+        },
+        {
+                path: "/memorize",
+                element: <Memorize />,
         },
 ]);
 

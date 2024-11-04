@@ -1,10 +1,10 @@
-import "./index.css";
+import "../index.css";
 import MCQ from "./components/MultipleChoiceQuestion.jsx";
 import FITB from "./components/FillInTheBlank.jsx";
 import TF from "./components/TrueOrFalse.jsx";
 import Err from "./components/ErrorMessage.jsx";
-import MQF from "./assets/directory/MQF.json";
-import SkillLevel1 from "./assets/directory/SkillLevel1.json";
+import MQF from "../assets/directory/MQF.json";
+import SkillLevel1 from "../assets/directory/SkillLevel1.json";
 import { useParams } from "react-router-dom";
 import { createContext, useState } from "react";
 
