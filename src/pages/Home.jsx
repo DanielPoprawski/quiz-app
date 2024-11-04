@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { setTitle } from "../index.jsx";
 
 export default function Home() {
         const [data, setData] = useState();
         const directory = "./assets/directory/";
+        setTitle("Home");
 
         return (
                 <div className="content">

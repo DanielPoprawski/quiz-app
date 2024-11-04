@@ -1,10 +1,12 @@
 import { useState } from "react";
 import paragraph from "../assets/directory/lorem_ipsum.json";
+import { setTitle } from "../index.jsx";
 
 export default function Memorize() {
         const [input, setInput] = useState("");
         const keys = " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ,.".split("");
         const [body, setBody] = useState(paragraph);
+        setTitle("Memorize");
 
         //TODO: Fix Splitter so that it highlights wrong letters as red
         //TOOD: Add settings so only the next couple words are visible

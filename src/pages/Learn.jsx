@@ -7,6 +7,7 @@ import MQF from "../assets/directory/MQF.json";
 import SkillLevel1 from "../assets/directory/SkillLevel1.json";
 import { useParams } from "react-router-dom";
 import { createContext, useState } from "react";
+import { setTitle } from "../index.jsx";
 
 export const QuizContext = createContext(null);
 const AnswerKey = new Map();
@@ -18,6 +19,8 @@ export default function Learn() {
         const [scoreColor, setColor] = useState("green");
         const [currentIndex, changeIndex] = useState(useParams().questionSet);
         const questionSets = [MQF, SkillLevel1];
+
+        setTitle("Learn");
 
         questionSets[currentIndex].map((question, i) => {
                 AnswerKey.set(i, question.answer);

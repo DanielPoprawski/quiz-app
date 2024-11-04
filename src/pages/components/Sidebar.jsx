@@ -16,7 +16,7 @@ export default function Sidebar() {
 
         return (
                 <div className="sidebar">
-                        <a href="#menu" onClick={toggleHidden}>
+                        <a href="#" onClick={toggleHidden}>
                                 <img src="../src/assets/icons/menu-svgrepo-com.svg" width={size} height={size} />
                         </a>
 
