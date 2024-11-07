@@ -43,7 +43,6 @@ export function setTitle(title, prevailOnUnmount = false) {
 
 createRoot(document.getElementById("root")).render(
         <StrictMode>
-                <Sidebar />
                 <RouterProvider router={router} />
         </StrictMode>
 );

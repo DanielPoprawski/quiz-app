@@ -1,9 +1,16 @@
 import { useState } from "react";
+import { Button } from "antd";
+import { ArrowIcon, BrainIcon, HomeIcon, MenuIcon, SettingsIcon } from "../../assets/icons/CustomIcons";
+import { Flex } from "antd";
 
 export default function Sidebar() {
         const size = "24px";
         const [hidden, setHidden] = useState(true);
         const [style, setStyle] = useState({ display: "none" });
+
+        // TODO: Add this component to all pages
+        // TODO: Fix the margins and other styling issues
+        // TODO: Reimplement the hidden/unhidden functionality
 
         function toggleHidden() {
                 setHidden(!hidden);
@@ -16,7 +23,7 @@ export default function Sidebar() {
 
         return (
                 <div className="sidebar">
-                        <a href="#" onClick={toggleHidden}>
+                        {/* <a href="#" onClick={toggleHidden}>
                                 <img src="../src/assets/icons/menu-svgrepo-com.svg" width={size} height={size} />
                         </a>
 
@@ -24,7 +31,7 @@ export default function Sidebar() {
                                 <img src="../src/assets/icons/home-svgrepo-com.svg" width={size} height={size} />
                         </a>
 
-                        <a href="/learn" style={style}>
+                        <a href="/learn/0" style={style}>
                                 <img
                                         src="../src/assets/icons/chevron-right-svgrepo-com.svg"
                                         width={size}
@@ -38,7 +45,16 @@ export default function Sidebar() {
 
                         <a href="/settings" style={style}>
                                 <img src="../src/assets/icons/gear-svgrepo-com.svg" width={size} height={size} />
-                        </a>
+                        </a> */}
+
+                        <Flex vertical>
+                                {/* TODO: Add <Link> elements to these buttons */}
+                                <Button size={"large"} icon={<MenuIcon />} />
+                                <Button size={"large"} icon={<HomeIcon />} />
+                                <Button size={"large"} icon={<ArrowIcon />} />
+                                <Button size={"large"} icon={<BrainIcon />} />
+                                <Button size={"large"} icon={<SettingsIcon />} />
+                        </Flex>
                 </div>
         );
 }
