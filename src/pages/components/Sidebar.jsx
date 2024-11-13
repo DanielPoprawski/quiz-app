@@ -8,7 +8,6 @@ export default function Sidebar() {
         const [hidden, setHidden] = useState(true);
         const [style, setStyle] = useState({ display: "none" });
 
-        // TODO: Add this component to all pages
         // TODO: Fix the margins and other styling issues
         // TODO: Reimplement the hidden/unhidden functionality
 

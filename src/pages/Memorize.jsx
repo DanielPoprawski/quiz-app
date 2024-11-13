@@ -1,6 +1,7 @@
 import { useState } from "react";
 import paragraph from "../assets/directory/lorem_ipsum.json";
 import { setTitle } from "../index.jsx";
+import Sider from "antd/es/layout/Sider.js";
 
 export default function Memorize() {
         const [input, setInput] = useState("");
@@ -12,16 +13,23 @@ export default function Memorize() {
         //TOOD: Add settings so only the next couple words are visible
 
         return (
-                <div className="content" onKeyDown={handleEvent}>
-                        <h1>Start typing...</h1>
-                        <button onClick={clearInput}> Clear </button>
-                        <br /> <br />
-                        <h2 tabIndex={0} className="typing">
-                                <Splitter />
-                                {body}
-                                <br />
-                        </h2>
-                </div>
+                <Flex>
+                        <Layout>
+                                <Sider>
+                                        <Sidebar />
+                                </Sider>
+                                <Content>
+                                        <h1>Start typing...</h1>
+                                        <button onClick={clearInput}> Clear </button>
+                                        <br /> <br />
+                                        <h2 tabIndex={0} className="typing">
+                                                <Splitter />
+                                                {body}
+                                                <br />
+                                        </h2>
+                                </Content>
+                        </Layout>
+                </Flex>
         );
 
         function clearInput() {

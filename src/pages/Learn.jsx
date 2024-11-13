@@ -8,6 +8,7 @@ import SkillLevel1 from "../assets/directory/SkillLevel1.json";
 import { useParams } from "react-router-dom";
 import { createContext, useState } from "react";
 import { setTitle } from "../index.jsx";
+import Sidebar from "./components/Sidebar.jsx";
 
 export const QuizContext = createContext(null);
 const AnswerKey = new Map();
@@ -66,13 +67,20 @@ export default function Learn() {
         }
 
         return (
-                <div className="content">
-                        <QuizContext.Provider value={{ map, setMap, error, changeError }}>
-                                <QuizBody fileData={questionSets[currentIndex]} />
-                                <button onClick={submitQuiz}> Submit Quiz</button>
-                                <h4 style={{ color: scoreColor }}>{score}</h4>
-                        </QuizContext.Provider>
-                </div>
+                <Flex>
+                        <Layout>
+                                <Sider>
+                                        <Sidebar />
+                                </Sider>
+                                <Content>
+                                        <QuizContext.Provider value={{ map, setMap, error, changeError }}>
+                                                <QuizBody fileData={questionSets[currentIndex]} />
+                                                <button onClick={submitQuiz}> Submit Quiz</button>
+                                                <h4 style={{ color: scoreColor }}>{score}</h4>
+                                        </QuizContext.Provider>
+                                </Content>
+                        </Layout>
+                </Flex>
         );
 }
 
