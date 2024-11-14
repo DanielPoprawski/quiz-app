@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "antd";
 import { ArrowIcon, BrainIcon, HomeIcon, MenuIcon, SettingsIcon } from "../../assets/icons/CustomIcons";
-import { Flex } from "antd";
+import { Flex, Space } from "antd";
 
 export default function Sidebar() {
         const size = "24px";
@@ -46,13 +46,14 @@ export default function Sidebar() {
                                 <img src="../src/assets/icons/gear-svgrepo-com.svg" width={size} height={size} />
                         </a> */}
 
-                        <Flex vertical>
+                        <Flex vertical align="center" gap="large">
                                 {/* TODO: Add <Link> elements to these buttons */}
-                                <Button size={"large"} icon={<MenuIcon />} />
-                                <Button size={"large"} icon={<HomeIcon />} />
-                                <Button size={"large"} icon={<ArrowIcon />} />
-                                <Button size={"large"} icon={<BrainIcon />} />
-                                <Button size={"large"} icon={<SettingsIcon />} />
+                                <Space direction="vertical" size="large">
+                                        <Button size={"large"} icon={<HomeIcon />} />
+                                        <Button size={"large"} icon={<ArrowIcon />} />
+                                        <Button size={"large"} icon={<BrainIcon />} />
+                                        <Button size={"large"} icon={<SettingsIcon />} />
+                                </Space>
                         </Flex>
                 </div>
         );
