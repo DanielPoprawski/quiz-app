@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { Button } from "antd";
+import { Button, Flex, Space } from "antd";
 import { ArrowIcon, BrainIcon, HomeIcon, MenuIcon, SettingsIcon } from "../../assets/icons/CustomIcons";
-import { Flex, Space } from "antd";
 
 export default function Sidebar() {
         const size = "24px";

@@ -8,11 +8,12 @@ import SkillLevel1 from "../assets/directory/SkillLevel1.json";
 import { useParams } from "react-router-dom";
 import { createContext, useState } from "react";
 import { setTitle } from "../index.jsx";
+import { Flex, Layout } from "antd";
 import Sidebar from "./components/Sidebar.jsx";
 
 export const QuizContext = createContext(null);
 const AnswerKey = new Map();
-
+const { Sider, Content } = Layout;
 export default function Learn() {
         const [map, setMap] = useState(new Map());
         const [error, changeError] = useState({});
@@ -87,17 +88,28 @@ export default function Learn() {
 function QuizBody({ fileData }) {
         return (
                 <>
-                        {fileData.map((question, index) => (
-                                <>
-                                        {question.type === "mcq" && (
-                                                <MCQ title={question.title} choices={question.choices} index={index} />
-                                        )}
-                                        {question.type === "fitb" && <FITB title={question.title} index={index} />}
-                                        {question.type === "tf" && <TF title={question.title} index={index} />}
-                                        <Err index={index} />
-                                        <br />
-                                </>
-                        ))}
+                        {fileData.map((question, index) => {
+                                const QuestionComponent = {
+                                        mcq: MCQ,
+                                        fitb: FITB,
+                                        tf: TF,
+                                }[question.type];
+
+                                return (
+                                        <key prop={`question-${index}`}>
+                                                {QuestionComponent && (
+                                                        <QuestionComponent
+                                                                title={question.title}
+                                                                index={index}
+                                                                choices={question.choices}
+                                                        />
+                                                )}
+
+                                                <Err index={index} />
+                                                <br />
+                                        </key>
+                                );
+                        })}
                 </>
         );
 }
