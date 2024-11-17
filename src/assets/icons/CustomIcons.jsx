@@ -98,3 +98,63 @@ export function MenuIcon() {
                 />
         );
 }
+
+export function Logo() {
+        return (
+                <Icon
+                        component={() => (
+                                <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        xmlSpace="preserve"
+                                        id="svg1"
+                                        width="64px"
+                                        height="64px"
+                                        version="1.1"
+                                        viewBox="0 0 200 200"
+                                >
+                                        <g
+                                                id="layer1"
+                                                fill="none"
+                                                strokeDasharray="none"
+                                                strokeLinecap="round"
+                                                strokeOpacity="1"
+                                                strokeWidth="28"
+                                        >
+                                                <path
+                                                        id="path3-5-4"
+                                                        stroke="#ef476f"
+                                                        d="m97.904 57.635-23.04 85.074 25.066 4.051s77.89 14.427 83.302-50.892c6.841-82.57-149.37-103.939-127.358-9.115"
+                                                        display="inline"
+                                                ></path>
+                                                <path
+                                                        id="path3-5-5"
+                                                        stroke="#ffd166"
+                                                        d="m88.568 64.528-23.04 85.074 25.066 4.051s77.89 14.427 83.302-50.893C180.737 20.191 24.525-1.178 46.538 93.645"
+                                                        display="inline"
+                                                ></path>
+                                                <path
+                                                        id="path3-5"
+                                                        stroke="#06d6a0"
+                                                        d="m79.232 71.42-23.04 85.074 25.066 4.051s77.89 14.427 83.301-50.892c6.842-82.57-149.37-103.939-127.358-9.115"
+                                                        display="inline"
+                                                ></path>
+                                                <path
+                                                        id="path3"
+                                                        stroke="#118ab2"
+                                                        d="m69.896 78.313-23.04 85.074 25.066 4.05s77.89 14.428 83.301-50.892c6.842-82.569-149.37-103.938-127.358-9.115"
+                                                        display="inline"
+                                                        opacity="1"
+                                                ></path>
+                                                <path
+                                                        id="path3-5-59"
+                                                        fillOpacity="1"
+                                                        stroke="#000"
+                                                        d="M60.56 85.205 37.519 170.28l25.066 4.051s77.89 14.427 83.302-50.892c6.842-82.57-149.37-103.939-127.358-9.115"
+                                                        display="inline"
+                                                ></path>
+                                        </g>
+                                </svg>
+                        )}
+                />
+        );
+}

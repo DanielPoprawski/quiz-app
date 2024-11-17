@@ -12,7 +12,7 @@ export default function Home() {
         return (
                 <Flex>
                         <Layout>
-                                <Sider>
+                                <Sider width={"100px"}>
                                         <Sidebar />
                                 </Sider>
                                 <Content>
