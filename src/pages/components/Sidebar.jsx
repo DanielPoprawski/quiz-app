@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Button, Flex, Space } from "antd";
+import { BrowserRouter as Router, Routes, Route, createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Link } from "react-router-dom"
 import { ArrowIcon, BrainIcon, HomeIcon, MenuIcon, SettingsIcon } from "../../assets/icons/CustomIcons";
 
 export default function Sidebar() {
@@ -48,10 +50,10 @@ export default function Sidebar() {
                         <Flex vertical align="center" gap="large">
                                 {/* TODO: Add <Link> elements to these buttons */}
                                 <Space direction="vertical" size="large">
-                                        <Button size={"large"} icon={<HomeIcon />} />
-                                        <Button size={"large"} icon={<ArrowIcon />} />
-                                        <Button size={"large"} icon={<BrainIcon />} />
-                                        <Button size={"large"} icon={<SettingsIcon />} />
+                                        <Link to="/"><Button size={"large"} icon={<HomeIcon />} /></Link>
+                                        <Link to="/learn/0"><Button size={"large"} icon={<ArrowIcon />} /></Link>
+                                        <Link to="/memorize"><Button size={"large"} icon={<BrainIcon />} /></Link>
+                                        <Link to="/settings"><Button size={"large"} icon={<SettingsIcon />} /></Link>
                                 </Space>
                         </Flex>
                 </div>

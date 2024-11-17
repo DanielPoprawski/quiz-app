@@ -1,7 +1,10 @@
 import { useState } from "react";
 import paragraph from "../assets/directory/lorem_ipsum.json";
 import { setTitle } from "../index.jsx";
-import Sider from "antd/es/layout/Sider.js";
+import { Flex, Layout } from "antd";
+import Sidebar from "./components/Sidebar.jsx";
+const { Sider, Content } = Layout;
+
 
 export default function Memorize() {
         const [input, setInput] = useState("");

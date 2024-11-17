@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route, createBrowserRouter, RouterProv
 import Learn from "./pages/Learn.jsx";
 import Home from "./pages/Home.jsx";
 import Sidebar from "./pages/components/Sidebar.jsx";
+import Settings from "./pages/Settings.jsx";
 import NotFound from "./pages/404.jsx";
 import Memorize from "./pages/Memorize.jsx";
 import { useRef, useEffect } from "react";
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
         {
                 path: "/memorize",
                 element: <Memorize />,
+        },
+        {
+                path: "/settings",
+                element: <Settings />,
         },
 ]);
 
