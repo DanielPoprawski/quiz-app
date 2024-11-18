@@ -1,7 +1,9 @@
 import { useState } from "react";
 import paragraph from "../assets/directory/lorem_ipsum.json";
 import { setTitle } from "../index.jsx";
-import Sider from "antd/es/layout/Sider.js";
+import { Flex, Layout } from "antd";
+import Sidebar from "./components/Sidebar.jsx";
+const { Sider, Content } = Layout;
 
 export default function Memorize() {
         const [input, setInput] = useState("");
@@ -15,14 +17,14 @@ export default function Memorize() {
         return (
                 <Flex>
                         <Layout>
-                                <Sider>
+                                <Sider width="120px">
                                         <Sidebar />
                                 </Sider>
                                 <Content>
                                         <h1>Start typing...</h1>
                                         <button onClick={clearInput}> Clear </button>
                                         <br /> <br />
-                                        <h2 tabIndex={0} className="typing">
+                                        <h2 tabIndex={0} className="typing" onKeyUp={handleEvent}>
                                                 <Splitter />
                                                 {body}
                                                 <br />

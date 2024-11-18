@@ -3,10 +3,11 @@ import { StrictMode } from "react";
 import { BrowserRouter as Router, Routes, Route, createBrowserRouter, RouterProvider } from "react-router-dom";
 import Learn from "./pages/Learn.jsx";
 import Home from "./pages/Home.jsx";
-import Sidebar from "./pages/components/Sidebar.jsx";
+import Settings from "./pages/Settings.jsx";
 import NotFound from "./pages/404.jsx";
 import Memorize from "./pages/Memorize.jsx";
 import { useRef, useEffect } from "react";
+import { ConfigProvider } from "antd";
 
 const router = createBrowserRouter([
         {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
         {
                 path: "/memorize",
                 element: <Memorize />,
+        },
+        {
+                path: "/settings",
+                element: <Settings />,
         },
 ]);
 
@@ -43,6 +48,16 @@ export function setTitle(title, prevailOnUnmount = false) {
 
 createRoot(document.getElementById("root")).render(
         <StrictMode>
-                <RouterProvider router={router} />
+                <ConfigProvider
+                        theme={{
+                                components: {
+                                        Layout: {
+                                                siderBg: "#f0f0f0",
+                                        },
+                                },
+                        }}
+                >
+                        <RouterProvider router={router} />
+                </ConfigProvider>
         </StrictMode>
 );

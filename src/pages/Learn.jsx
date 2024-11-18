@@ -70,7 +70,7 @@ export default function Learn() {
         return (
                 <Flex>
                         <Layout>
-                                <Sider>
+                                <Sider width="120px">
                                         <Sidebar />
                                 </Sider>
                                 <Content>

@@ -106,9 +106,9 @@ export function Logo() {
                                 <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         xmlSpace="preserve"
-                                        id="svg1"
-                                        width="64px"
-                                        height="64px"
+                                        id="svgLogo"
+                                        width="40px"
+                                        height="40px"
                                         version="1.1"
                                         viewBox="0 0 200 200"
                                 >
