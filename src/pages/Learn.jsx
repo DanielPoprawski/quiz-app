@@ -1,24 +1,28 @@
-import "../index.css";
-import MCQ from "./components/MultipleChoiceQuestion.jsx";
-import FITB from "./components/FillInTheBlank.jsx";
-import TF from "./components/TrueOrFalse.jsx";
-import Err from "./components/ErrorMessage.jsx";
+import { Flex, Layout, Modal } from "antd";
+import { createContext, useState } from "react";
+import { useParams } from "react-router-dom";
 import MQF from "../assets/directory/MQF.json";
 import SkillLevel1 from "../assets/directory/SkillLevel1.json";
-import { useParams } from "react-router-dom";
-import { createContext, useState } from "react";
+import "../index.css";
 import { setTitle } from "../index.jsx";
-import { Flex, Layout } from "antd";
+import FITB from "./components/FillInTheBlank.jsx";
+import MCQ from "./components/MultipleChoiceQuestion.jsx";
 import Sidebar from "./components/Sidebar.jsx";
+import TF from "./components/TrueOrFalse.jsx";
+import { ErrorIcon } from "../assets/icons/CustomIcons.jsx";
 
 export const QuizContext = createContext(null);
 const AnswerKey = new Map();
 const { Sider, Content } = Layout;
+
 export default function Learn() {
         const [map, setMap] = useState(new Map());
+
         const [error, changeError] = useState({});
+
         const [score, setScore] = useState();
         const [scoreColor, setColor] = useState("green");
+
         const [currentIndex, changeIndex] = useState(useParams().questionSet);
         const questionSets = [MQF, SkillLevel1];
 
@@ -33,12 +37,13 @@ export default function Learn() {
                 map.keys().forEach((key) => auxSet.delete(key));
 
                 const errorMessage = {};
-                auxSet.forEach((value) => (errorMessage[value] = "Please answer all questions before submitting"));
-                changeError(errorMessage);
+                auxSet.forEach((value) => (errorMessage[value] = <ErrorIcon />));
                 //TODO: Add an alert that allows the user to manually submit even if not all questions have been answered
-
                 if (auxSet.size < 1) {
+                        //If all questions are answered...
                         calculateScore();
+                } else {
+                        changeError(errorMessage);
                 }
         }
 
@@ -104,8 +109,6 @@ function QuizBody({ fileData }) {
                                                                 choices={question.choices}
                                                         />
                                                 )}
-
-                                                <Err index={index} />
                                                 <br />
                                         </key>
                                 );

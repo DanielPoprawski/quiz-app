@@ -5,9 +5,17 @@ export default function MultipleChoiceQuestion(props) {
         const { map, setMap } = useContext(QuizContext);
         const [value, setValue] = useState();
 
+        const { error, changeError } = useContext(QuizContext);
+        const index = props.index;
+
         return (
                 <>
-                        <h2> {props.title} </h2>
+                        <h2>
+                                <span style={{ color: "red" }} index={index}>
+                                        {error[index]}
+                                </span>
+                                {props.title}
+                        </h2>
                         <p>
                                 {props.choices.map((choice, i) => (
                                         <label key={i}>

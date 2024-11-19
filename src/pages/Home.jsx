@@ -1,6 +1,6 @@
+import { Flex, Layout } from "antd";
 import { useState } from "react";
 import { setTitle } from "../index.jsx";
-import { Flex, Layout } from "antd";
 import Sidebar from "./components/Sidebar.jsx";
 const { Sider, Content } = Layout;
 
