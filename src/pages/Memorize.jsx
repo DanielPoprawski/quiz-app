@@ -1,15 +1,42 @@
 import { Flex, Layout } from "antd";
-import { useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import paragraph from "../assets/directory/lorem_ipsum.json";
 import { setTitle } from "../index.jsx";
 import Sidebar from "./components/Sidebar.jsx";
 const { Sider, Content } = Layout;
 
 export default function Memorize() {
-        const [input, setInput] = useState("");
         const keys = " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ,.".split("");
-        const [body, setBody] = useState(paragraph);
         setTitle("Memorize");
+        const [input, setInput] = useState("");
+        const focusRef = useRef(null);
+        const [isFocused, setIsFocused] = useState(false);
+        const [body, setBody] = useState(paragraph);
+
+        const handleFocus = () => {
+                setIsFocused(true);
+        };
+
+        const handleBlur = () => {
+                setIsFocused(false);
+                divElement.focus();
+        };
+
+        useEffect(() => {
+                const divElement = focusRef.current;
+                if (divElement) {
+                        divElement.addEventListener("focus", handleFocus);
+                        divElement.addEventListener("blur", handleBlur);
+                        divElement.focus();
+                }
+
+                return () => {
+                        if (divElement) {
+                                divElement.removeEventListener("focus", handleFocus);
+                                divElement.removeEventListener("blur", handleBlur);
+                        }
+                };
+        }, [focusRef.current]);
 
         //TODO: Fix Splitter so that it highlights wrong letters as red
         //TOOD: Add settings so only the next couple words are visible
@@ -21,10 +48,10 @@ export default function Memorize() {
                                         <Sidebar />
                                 </Sider>
                                 <Content>
-                                        <h1>Start typing...</h1>
+                                        <h1>{isFocused ? "Start typing..." : "Wait..."}</h1>
                                         <button onClick={clearInput}> Clear </button>
                                         <br /> <br />
-                                        <h2 tabIndex={0} className="typing" onKeyUp={handleEvent}>
+                                        <h2 tabIndex={0} className="typing" onKeyUp={handleEvent} ref={focusRef}>
                                                 <Splitter />
                                                 {body}
                                                 <br />
