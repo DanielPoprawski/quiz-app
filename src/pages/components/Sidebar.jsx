@@ -1,42 +1,62 @@
 import { useState } from "react";
-import { Button, Flex, Space } from "antd";
 import { Link } from "react-router-dom";
-import { ArrowIcon, BrainIcon, HomeIcon, Logo, MenuIcon, SettingsIcon } from "../../assets/icons/CustomIcons";
+import { Home, ArrowRight, Brain, Settings } from "lucide-react";
+import DLogoCurvy from "/public/assets/DLogoCurvy.jsx";
 
 export default function Sidebar() {
-        const size = "24px";
-        const [hidden, setHidden] = useState(true);
-        const [style, setStyle] = useState({ display: "none" });
+      const [hidden, setHidden] = useState(true);
 
-        // TODO: Fix the margins and other styling issues
-        // TODO: Reimplement the hidden/unhidden functionality
+      function toggleHidden() {
+            setHidden(!hidden);
+      }
 
-        function toggleHidden() {
-                setHidden(!hidden);
-                if (hidden) {
-                        setStyle({ display: "block" });
-                } else {
-                        setStyle({ display: "none" });
-                }
-        }
+      return (
+            <div className="flex flex-col items-center py-6 h-screen bg-gray-100 shadow-md">
+                  <div className="flex flex-col gap-6">
+                        {/* Logo */}
+                        <div className="flex justify-center mb-2">
+                              <DLogoCurvy />
+                        </div>
 
-        return (
-                <Flex vertical align="center" gap="large">
-                        <Space direction="vertical" size="large">
-                                <Logo />
-                                <Link to="/">
-                                        <Button size={"large"} icon={<HomeIcon />} />
-                                </Link>
-                                <Link to="/learn/0">
-                                        <Button size={"large"} icon={<ArrowIcon />} />
-                                </Link>
-                                <Link to="/memorize">
-                                        <Button size={"large"} icon={<BrainIcon />} />
-                                </Link>
-                                <Link to="/settings">
-                                        <Button size={"large"} icon={<SettingsIcon />} />
-                                </Link>
-                        </Space>
-                </Flex>
-        );
+                        {/* Navigation Links */}
+                        <Link to="/" className="block">
+                              <button className="w-12 h-12 rounded-lg bg-white hover:bg-blue-100 flex items-center justify-center shadow-sm transition-colors">
+                                    <Home size={24} className="text-gray-700" />
+                              </button>
+                        </Link>
+
+                        <Link to="/learn/0" className="block">
+                              <button className="w-12 h-12 rounded-lg bg-white hover:bg-blue-100 flex items-center justify-center shadow-sm transition-colors">
+                                    <ArrowRight size={24} className="text-gray-700" />
+                              </button>
+                        </Link>
+
+                        <Link to="/memorize" className="block">
+                              <button className="w-12 h-12 rounded-lg bg-white hover:bg-blue-100 flex items-center justify-center shadow-sm transition-colors">
+                                    <Brain size={24} className="text-gray-700" />
+                              </button>
+                        </Link>
+
+                        <Link to="/settings" className="block">
+                              <button className="w-12 h-12 rounded-lg bg-white hover:bg-blue-100 flex items-center justify-center shadow-sm transition-colors">
+                                    <Settings size={24} className="text-gray-700" />
+                              </button>
+                        </Link>
+                  </div>
+
+                  {/* Toggle button for mobile */}
+                  <div className="mt-auto">
+                        <button
+                              onClick={toggleHidden}
+                              className="w-12 h-12 rounded-lg bg-white hover:bg-blue-100 flex items-center justify-center shadow-sm transition-colors"
+                        >
+                              {hidden ? (
+                                    <ArrowRight size={24} className="text-gray-700" />
+                              ) : (
+                                    <ArrowRight size={24} className="text-gray-700 transform rotate-180" />
+                              )}
+                        </button>
+                  </div>
+            </div>
+      );
 }

@@ -1,118 +1,134 @@
-import { Flex, Layout, Modal } from "antd";
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import MQF from "../assets/directory/MQF.json";
-import SkillLevel1 from "../assets/directory/SkillLevel1.json";
 import "../index.css";
-import { setTitle } from "../index.jsx";
+import { setTitle } from "../main.jsx";
 import FITB from "./components/FillInTheBlank.jsx";
 import MCQ from "./components/MultipleChoiceQuestion.jsx";
-import Sidebar from "./components/Sidebar.jsx";
 import TF from "./components/TrueOrFalse.jsx";
-import { ErrorIcon } from "../assets/icons/CustomIcons.jsx";
+import { AlertCircle } from "lucide-react";
 
 export const QuizContext = createContext(null);
-const AnswerKey = new Map();
-const { Sider, Content } = Layout;
 
 export default function Learn() {
-        const [map, setMap] = useState(new Map());
+      setTitle("Learn");
 
-        const [error, changeError] = useState({});
+      const directory = Object.values(import.meta.glob("/public/quizzes/*.json", { eager: true }));
+      const files = directory.map((module) => module.default);
 
-        const [score, setScore] = useState();
-        const [scoreColor, setColor] = useState("green");
+      const [map, setMap] = useState(new Map());
+      const [error, changeError] = useState({});
+      const [score, setScore] = useState();
+      const [scoreColor, setColor] = useState("text-green-500");
+      const [answerKey, setAnswerKey] = useState(new Map());
 
-        const [currentIndex, changeIndex] = useState(useParams().questionSet);
-        const questionSets = [MQF, SkillLevel1];
+      const { questionSet } = useParams();
+      const currentIndex = parseInt(questionSet) || 0;
 
-        setTitle("Learn");
+      // Ensure the selected quiz exists
+      const selectedQuiz = files[currentIndex] || { title: "Unknown Quiz", content: [] };
+      const quizTitle = selectedQuiz.title;
+      const questions = selectedQuiz.content || [];
 
-        questionSets[currentIndex].map((question, i) => {
-                AnswerKey.set(i, question.answer);
-        });
+      // Build answer key when questions change
+      useEffect(() => {
+            const newAnswerKey = new Map();
 
-        function submitQuiz() {
-                const auxSet = new Set(AnswerKey.keys());
-                map.keys().forEach((key) => auxSet.delete(key));
+            if (questions && questions.length > 0) {
+                  questions.forEach((question, i) => {
+                        newAnswerKey.set(i, question.answer);
+                  });
+            }
 
-                const errorMessage = {};
-                auxSet.forEach((value) => (errorMessage[value] = <ErrorIcon />));
-                //TODO: Add an alert that allows the user to manually submit even if not all questions have been answered
-                if (auxSet.size < 1) {
-                        //If all questions are answered...
-                        calculateScore();
-                } else {
-                        changeError(errorMessage);
-                }
-        }
+            setAnswerKey(newAnswerKey);
+      }, [questions]);
 
-        function calculateScore() {
-                let score = 0;
-                AnswerKey.forEach((value, key) => {
-                        if (value === map.get(key)) {
-                                score++;
-                        }
-                });
-                score = (score / AnswerKey.size) * 100;
+      function submitQuiz() {
+            const auxSet = new Set(answerKey.keys());
+            Array.from(map.keys()).forEach((key) => auxSet.delete(key));
 
-                updateScore(score);
-        }
+            const errorMessage = {};
+            auxSet.forEach((value) => (errorMessage[value] = <AlertCircle className="text-red-500" />));
 
-        function updateScore(number) {
-                if (number >= 90) {
-                        setColor("green");
-                } else if (number >= 80) {
-                        setColor("yellow");
-                } else if (number >= 70) {
-                        setColor("orange");
-                } else {
-                        setColor("red");
-                }
-                setScore(number + "%");
-        }
+            if (auxSet.size < 1) {
+                  // If all questions are answered...
+                  calculateScore();
+            } else {
+                  changeError(errorMessage);
+            }
+      }
 
-        return (
-                <Flex>
-                        <Layout>
-                                <Sider width="120px">
-                                        <Sidebar />
-                                </Sider>
-                                <Content>
-                                        <QuizContext.Provider value={{ map, setMap, error, changeError }}>
-                                                <QuizBody fileData={questionSets[currentIndex]} />
-                                                <button onClick={submitQuiz}> Submit Quiz</button>
-                                                <h4 style={{ color: scoreColor }}>{score}</h4>
-                                        </QuizContext.Provider>
-                                </Content>
-                        </Layout>
-                </Flex>
-        );
+      function calculateScore() {
+            let scoreValue = 0;
+            answerKey.forEach((value, key) => {
+                  if (value === map.get(key)) {
+                        scoreValue++;
+                  }
+            });
+
+            const percentage = answerKey.size > 0 ? (scoreValue / answerKey.size) * 100 : 0;
+
+            updateScore(percentage);
+      }
+
+      function updateScore(number) {
+            if (number >= 90) {
+                  setColor("text-green-500");
+            } else if (number >= 80) {
+                  setColor("text-yellow-500");
+            } else if (number >= 70) {
+                  setColor("text-orange-500");
+            } else {
+                  setColor("text-red-500");
+            }
+            setScore(number.toFixed(1) + "%");
+      }
+
+      return (
+            <div className="flex-1 p-8">
+                  <h1 className="text-2xl font-bold mb-4">{quizTitle}</h1>
+
+                  <QuizContext.Provider value={{ map, setMap, error, changeError }}>
+                        {questions.length > 0 ? (
+                              <>
+                                    <QuizBody fileData={questions} />
+                                    <button
+                                          onClick={submitQuiz}
+                                          className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded transition-colors"
+                                    >
+                                          Submit Quiz
+                                    </button>
+                                    <h4 className={`mt-4 font-medium ${scoreColor}`}>{score}</h4>
+                              </>
+                        ) : (
+                              <div className="text-red-500">No questions found for this quiz.</div>
+                        )}
+                  </QuizContext.Provider>
+            </div>
+      );
 }
 
 function QuizBody({ fileData }) {
-        return (
-                <>
-                        {fileData.map((question, index) => {
-                                const QuestionComponent = {
-                                        mcq: MCQ,
-                                        fitb: FITB,
-                                        tf: TF,
-                                }[question.type];
+      return (
+            <div className="mb-8">
+                  {fileData.map((question, index) => {
+                        const QuestionComponent = {
+                              mcq: MCQ,
+                              fitb: FITB,
+                              tf: TF,
+                        }[question.type];
 
-                                return (
-                                        <key prop={`question-${index}`}>
-                                                {QuestionComponent && (
-                                                        <QuestionComponent
-                                                                title={question.title}
-                                                                index={index}
-                                                                choices={question.choices}
-                                                        />
-                                                )}
-                                                <br />
-                                        </key>
-                                );
-                        })}
-                </>
-        );
+                        return (
+                              <div key={`question-${index}`} className="mb-6 p-4 border border-gray-200 rounded-lg">
+                                    {QuestionComponent && (
+                                          <QuestionComponent
+                                                title={question.title}
+                                                index={index}
+                                                choices={question.choices}
+                                          />
+                                    )}
+                              </div>
+                        );
+                  })}
+            </div>
+      );
 }

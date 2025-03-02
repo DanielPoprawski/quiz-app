@@ -1,0 +1,27 @@
+{
+      "title": "MQF",
+      "content": [
+            {
+                  "type": "mcq",
+                  "title": "What is the max range of a M777 howitzter?",
+                  "answer": 1,
+                  "choices": ["37km", "24km", "30km", "19.5km"]
+            },
+            {
+                  "type": "tf",
+                  "title": "The minimum deviation correction is 35m",
+                  "answer": false
+            },
+            {
+                  "type": "fitb",
+                  "title": "What is the acronym for the 14 Methods of Control?",
+                  "answer": "FACTTCCCCCRRDD"
+            },
+            {
+                  "type": "mcq",
+                  "title": "What is the minimal vertical shift, and how many meters is it expressed to?",
+                  "answer": 0,
+                  "choices": ["35m / 5m", "30m / 10m", "35m / 10m", "30m / 5m"]
+            }
+      ]
+}
