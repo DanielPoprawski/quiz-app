@@ -2,9 +2,7 @@ import { createContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "../index.css";
 import { setTitle } from "../main.jsx";
-import FITB from "./components/FillInTheBlank.jsx";
-import MCQ from "./components/MultipleChoiceQuestion.jsx";
-import TF from "./components/TrueOrFalse.jsx";
+import { FillInTheBlank as FITB, MultipleChoiceQuestion as MCQ, TrueOrFalse as TF } from "./components/Questions.jsx";
 import { AlertCircle } from "lucide-react";
 
 export const QuizContext = createContext(null);

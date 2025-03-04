@@ -31,12 +31,8 @@ export function setTitle(title, prevailOnUnmount = false) {
 function AppLayout() {
       return (
             <div className="flex h-screen bg-gray-50">
-                  {/* Fixed width sidebar */}
-                  <div className="w-[120px] h-screen bg-gray-100 shadow-md">
-                        <Sidebar />
-                  </div>
+                  <Sidebar />
 
-                  {/* Main content area */}
                   <div className="flex-1 overflow-auto">
                         <Outlet />
                   </div>

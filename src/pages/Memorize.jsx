@@ -84,7 +84,7 @@ export default function Memorize() {
 
                   <h2
                         tabIndex={0}
-                        className="typing text-xl font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 p-4 bg-gray-50 rounded-lg"
+                        className="typing text-xl font-medium text-gray-300 focus:outline-none p-4 bg-gray-50 rounded-lg"
                         onKeyUp={handleEvent}
                         ref={focusRef}
                   >

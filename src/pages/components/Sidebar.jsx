@@ -11,7 +11,11 @@ export default function Sidebar() {
       }
 
       return (
-            <div className="flex flex-col items-center py-6 h-screen bg-gray-100 shadow-md">
+            <div
+                  className={`flex flex-col items-center py-6 h-screen bg-gray-100 shadow-md ${
+                        hidden ? "w-[60px]" : "w-[120px]"
+                  }`}
+            >
                   <div className="flex flex-col gap-6">
                         {/* Logo */}
                         <div className="flex justify-center mb-2">
