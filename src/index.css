@@ -1,1 +1,13 @@
 @import "tailwindcss";
+@import "tailwindcss/utilities";
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+  .animate-blink::after {
+    animation: blink 1s step-end infinite;
+  @apply content-[''] inline-block w-1 h-4 bg-gray-500; 
+  }
