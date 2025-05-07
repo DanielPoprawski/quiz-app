@@ -9,5 +9,5 @@
 
   .animate-blink::after {
     animation: blink 1s step-end infinite;
-  @apply content-[''] inline-block w-1 h-4 bg-gray-500; 
+  @apply content-[''] inline-block w-1 h-5 relative top-0.5 bg-gray-500; 
   }

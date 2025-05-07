@@ -55,13 +55,17 @@ export default function Memorize() {
 		//	}
 		if (event.key === "Backspace" || event.key === "Escape") {
 			event.preventDefault();
+
 		}
 		if (event.key === "Backspace") {
 			setInput(input.slice(0, -1));
+			setBody(paragraph.substring(input.slice(0, -1).length));
 		}
 		if (event.key.length === 1) {
 			setInput(input + event.key);
+			setBody(body.substring(1));
 		}
+
 	}
 
 	function Splitter() {
@@ -79,20 +83,21 @@ export default function Memorize() {
 	}
 
 	return (
-		<div className="flex-1 p-8">
-			<h1 className="text-2xl font-bold mb-4">{isFocused ? "Start typing..." : "Wait..."}</h1>
+		<div className="flex-1 p-8 container mx-auto">
+			<div className="text-4xl font-bold mb-4 p-8 flex justify-between">{isFocused ? "Start typing..." : "Wait..."}<br />
+				<button
+					onClick={clearInput}
+					className="cursor-pointer bg-red-500 hover:bg-red-700 text-amber-100 text-lg font-lg py-2 px-4 rounded transition-colors border-red-600 border-2"
+				>
+					Clear
+				</button>
+			</div>
 
-			<button
-				onClick={clearInput}
-				className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded transition-colors"
-			>
-				Clear
-			</button>
 
 
 			<h2
 				tabIndex={0}
-				className="typing text-xl font-medium relative text-gray-300 focus:outline-none p-4"
+				className="typing text-xl font-medium font-mono relative text-gray-300 focus:outline-none p-4"
 				onKeyDown={handleEvent}
 				ref={focusRef}
 			>
