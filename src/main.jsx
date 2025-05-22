@@ -9,22 +9,20 @@ import NotFound from "./pages/404.jsx";
 import Memorize from "./pages/Memorize.jsx";
 import { useRef, useEffect } from "react";
 import Sidebar from "./pages/components/Sidebar.jsx";
+import LearnHome from "./pages/LearnHome.jsx";
 
 export function setTitle(title, prevailOnUnmount = false) {
       const defaultTitle = useRef(document.title);
 
       useEffect(() => {
-            document.title = "Quiz Time :: " + title;
+            document.title = `Quiz Time :: ${title}`;
       }, [title]);
 
-      useEffect(
-            () => () => {
-                  if (!prevailOnUnmount) {
-                        document.title = defaultTitle.current;
-                  }
-            },
-            []
-      );
+      useEffect(() => {
+            if (!prevailOnUnmount) {
+                  document.title = defaultTitle.current;
+            }
+      }, []);
 }
 
 // Layout component that includes the sidebar
@@ -47,11 +45,11 @@ createRoot(document.getElementById("root")).render(
                         <Route element={<AppLayout />}>
                               <Route element={<Home />} path="/" />
                               <Route element={<Learn />} path="/learn/:questionSet" />
-                              <Route element={<Learn />} path="/learn" /> {/* Default Learn route */}
+                              <Route element={<LearnHome />} path="/learn" />
                               <Route element={<Memorize />} path="/memorize" />
                               <Route element={<Settings />} path="/settings" />
+                              <Route element={<NotFound />} path="*" />
                         </Route>
-                        <Route element={<NotFound />} path="*" />
                   </Routes>
             </BrowserRouter>
       </StrictMode>

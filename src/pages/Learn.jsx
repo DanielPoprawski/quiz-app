@@ -20,7 +20,7 @@ export default function Learn() {
       const [answerKey, setAnswerKey] = useState(new Map());
 
       const { questionSet } = useParams();
-      const currentIndex = parseInt(questionSet) || 0;
+      const currentIndex = Number.parseInt(questionSet) || 0;
 
       // Ensure the selected quiz exists
       const selectedQuiz = files[currentIndex] || { title: "Unknown Quiz", content: [] };
@@ -89,10 +89,7 @@ export default function Learn() {
                         {questions.length > 0 ? (
                               <>
                                     <QuizBody fileData={questions} />
-                                    <button
-                                          onClick={submitQuiz}
-                                          className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded transition-colors"
-                                    >
+                                    <button onClick={submitQuiz} className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded transition-colors">
                                           Submit Quiz
                                     </button>
                                     <h4 className={`mt-4 font-medium ${scoreColor}`}>{score}</h4>
@@ -117,13 +114,7 @@ function QuizBody({ fileData }) {
 
                         return (
                               <div key={`question-${index}`} className="mb-6 p-4 border border-gray-200 rounded-lg">
-                                    {QuestionComponent && (
-                                          <QuestionComponent
-                                                title={question.title}
-                                                index={index}
-                                                choices={question.choices}
-                                          />
-                                    )}
+                                    {QuestionComponent && <QuestionComponent title={question.title} index={index} choices={question.choices} />}
                               </div>
                         );
                   })}

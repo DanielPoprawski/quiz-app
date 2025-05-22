@@ -1,19 +1,12 @@
 import { setTitle } from "../main.jsx";
-import Sidebar from "./components/Sidebar.jsx";
 
 export default function NotFound() {
       setTitle("404 Not Found");
       return (
-            <Flex>
-                  <Layout>
-                        <Sider width="120px">
-                              <Sidebar />
-                        </Sider>
-                  </Layout>
-                  <Content>
-                        <h1> Error 404</h1>
-                        <h3> Page not found :( </h3>
-                  </Content>
-            </Flex>
+            <div className="container mx-auto flex flex-col items-center justify-center h-screen">
+                  <h1 className="text-5xl font-bold mx-auto py-4"> Error 404 </h1>
+                  <br />
+                  <h3 className="text-2xl mx-auto"> Page not found :( </h3>
+            </div>
       );
 }

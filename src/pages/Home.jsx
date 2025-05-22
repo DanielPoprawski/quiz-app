@@ -1,39 +1,42 @@
 import { setTitle } from "../main.jsx";
+import { useNavigate } from "react-router-dom";
+import { BookOpen, Brain } from "lucide-react";
 
 export default function Home() {
-      const directory = Object.values(import.meta.glob("/public/quizzes/*.json", { eager: true }));
-      const files = directory.map((module) => module.default);
+      const navigate = useNavigate();
       setTitle("Home");
 
       return (
-            <div className="flex w-full h-screen">
-                  <div className="flex flex-row w-full">
-                        <div className="flex-1 p-8 bg-white">
-                              <h1 className="text-3xl font-bold text-gray-800">React quiz app</h1>
-                              <h4 className="text-lg text-gray-600">By Daniel Poprawski</h4>
-
-                              <div className="my-8"></div>
-
-                              <h2 className="text-2xl font-semibold text-gray-800 mb-4">Available quizzes</h2>
-
-                              <div className="flex flex-col w-96 border border-gray-300">
-                                    <div className="flex border-b-2 border-gray-300">
-                                          <div className="flex-1 text-left py-2 px-4 font-bold">Name</div>
-                                          <div className="flex-1 text-left py-2 px-4 font-bold">Questions</div>
-                                    </div>
-                                    {files.map((item, index) => (
-                                          <div key={index} className="flex border-b border-gray-200 hover:bg-gray-50">
-                                                <div className="flex-1 py-3 px-4">
-                                                      <a
-                                                            href={`/learn/${index}`}
-                                                            className="text-blue-600 hover:text-blue-800 hover:underline"
-                                                      >
-                                                            {item.title}
-                                                      </a>
-                                                </div>
-                                                <div className="flex-1 py-3 px-4">{item.content.length}</div>
-                                          </div>
-                                    ))}
+            <div className="flex w-full h-screen flex-col bg-gray-100">
+                  <div className="text-5xl font-bold ml-15 mt-15"> QuizMe</div>
+                  <div className="text-3xl mb-5 ml-15 mt-2"> Resources: </div>
+                  <div className="grid grid-cols-2 mx-auto container gap-4 w-5xl mt-[10vh]">
+                        <div
+                              className="shadow-gray-300 shadow-md rounded-lg cursor-pointer"
+                              onMouseUpCapture={() => {
+                                    navigate("/learn");
+                              }}
+                        >
+                              <div className="p-8 bg-white rounded-t-lg">
+                                    <BookOpen className="mx-auto w-24 h-24 text-gray-700" />
+                              </div>
+                              <div className="bg-gray-100 p-8 py-6 rounded-b-lg border-t border-t-gray-300">
+                                    <div className="font-bold text-3xl text-gray-700">Learn</div>
+                                    <div> Practice test from any subject with my easy to use quiz app</div>
+                              </div>
+                        </div>
+                        <div
+                              className="shadow-gray-300 shadow-md rounded-lg cursor-pointer"
+                              onMouseUpCapture={() => {
+                                    navigate("/memorize");
+                              }}
+                        >
+                              <div className="p-8 bg-white rounded-t-lg">
+                                    <Brain className="mx-auto w-24 h-24 text-gray-700" />
+                              </div>
+                              <div className="bg-gray-100 p-8 py-6 rounded-b-lg border-t border-t-gray-300">
+                                    <div className="font-bold text-3xl text-gray-700">Memorize</div>
+                                    <div>Memorize any piece of text with my memorization app</div>
                               </div>
                         </div>
                   </div>
