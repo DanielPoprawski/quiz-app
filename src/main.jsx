@@ -47,6 +47,7 @@ createRoot(document.getElementById("root")).render(
                               <Route element={<Learn />} path="/learn/:questionSet" />
                               <Route element={<LearnHome />} path="/learn" />
                               <Route element={<Memorize />} path="/memorize" />
+                              <Route element={<Memorize />} path="/memorize/:poem" />
                               <Route element={<Settings />} path="/settings" />
                               <Route element={<NotFound />} path="*" />
                         </Route>
