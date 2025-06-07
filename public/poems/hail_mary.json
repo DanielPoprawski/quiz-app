@@ -1,4 +1,6 @@
-[
+{
+    "title": "Hail Mary",
+    "content": [
       "Hail Mary, full of grace,",
       "The Lord is with thee",
       "Blessed art thou amongst women,",
@@ -6,3 +8,4 @@
       "Holy Mary, mother of God, pray for us sinners,",
       "Now, and at the hour of our death, Amen."
     ]
+}
